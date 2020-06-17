@@ -1048,4 +1048,196 @@ public class fullgamealphabeta
         return "";                                                                                                                         
    } 
 
-  
+  public static String jumpBLACK(char board[][],int i,int j,int visited[][],double utility[][])
+   { String result[]={"","",""};
+     int visited1[][]= new int[16][16];
+     System.out.println("In recurrsion");
+    //pass k=0 and b=0 will call the function in main
+    int a=0;
+     int m,n;
+     if(i+1>=0  && i+1<16 && j+1>=0 && j+1<16)
+        {System.out.println("in diagonal");
+         if(board[i+1][j+1]!='.')
+            {
+              m=i+2;
+              n=j+2;  
+            if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+            {   
+                if(board[i+2][j+2]=='.' &&visited1[i+2][j+2]!=1)
+                   {System.out.println(" Going into Jump 1");
+                    result[a]="J"+" "+j+","+i+" "+(j+2)+","+(i+2)+".";
+                    visited1[i+2][j+2]=1;
+                    if(m==0)
+                      {if(n==0 ||n==1||n==2||n==3||n==4){
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                       }
+                      }  
+                    else if(m==1)
+                      {if(n==0 ||n==1||n==2||n==3||n==4){
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                       }
+                      }
+                    else if(m==2)
+                      {
+                        if(n==0||n==1||n==2||n==3)
+                        {System.out.println("Going into 2nd move");
+                         result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                        }
+                      }
+                    else if(m==3)
+                      {if(n==0||n==1||n==2)
+                        {
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                        }
+                      }
+                    else if(m==4)
+                      {if(n==0||n==1){
+
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                         }
+                      }
+                      
+                    //do all the above if else  or just keep a variable to maintain the depth and stop at depth 6;  
+                    //return result[a];                   
+                    //break;
+                   }
+            }
+            }
+        }
+      a++;
+      visited1=visited;  
+      if(i+1>=0  && i+1<16 && j>=0 && j<16)
+        {
+         if(board[i+1][j]!='.')
+            {
+            if(i+2>=0  && i+2<16 && j>=0 && j<16)
+            {   System.out.println("in side");
+                m=i+2;
+                n=j;
+                if(board[i+2][j]=='.' &&visited1[i+2][j]!=1)
+                   {System.out.println(" Going into Jump 2");
+                    result[a]="J"+" "+j+","+i+" "+(j)+","+(i+2)+".";
+                    visited1[i+2][j]=1;
+                    if(m==0)
+                      {if(n==0 ||n==1||n==2||n==3||n==4){
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                       }
+                      }  
+                    else if(m==1)
+                      {if(n==0 ||n==1||n==2||n==3||n==4){
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                       }
+                      }
+                    else if(m==2)
+                      {
+                        if(n==0||n==1||n==2||n==3)
+                        {System.out.println("Going into 2nd move");
+                         result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                        }
+                      }
+                    else if(m==3)
+                      {if(n==0||n==1||n==2)
+                        {
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                        }
+                      }
+                    else if(m==4)
+                      {if(n==0||n==1){
+
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                         }
+                      }
+                    //return result[a]; 
+                    //break;
+                   }
+            }
+            }
+        }
+      a++;
+      visited1=visited;  
+      if(i>=0  && i<16 && j+1>=0 && j+1<16)
+        {
+         if(board[i][j+1]!='.')
+            {
+            if(i>=0  && i<16 && j+2>=0 && j+2<16)
+            {   System.out.println("in left");
+                m=i;
+                n=j+2;
+                if(board[i][j+2]=='.' &&visited1[i][j+2]!=1)
+                   {System.out.println(" Going into Jump 3");
+                    result[a]="J"+" "+j+","+i+" "+(j+2)+","+(i)+".";
+                    visited1[i][j+2]=1;
+                    if(m==0)
+                      {if(n==0 ||n==1||n==2||n==3||n==4){
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                       }
+                      }  
+                    else if(m==1)
+                      {if(n==0 ||n==1||n==2||n==3||n==4){
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                       }
+                      }
+                    else if(m==2)
+                      {
+                        if(n==0||n==1||n==2||n==3)
+                        {System.out.println("Going into 2nd move");
+                         result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                        }
+                      }
+                    else if(m==3)
+                      {if(n==0||n==1||n==2)
+                        {
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                        }
+                      }
+                    else if(m==4)
+                      {if(n==0||n==1){
+
+                        result[a]=result[a]+jumpBLACK(board,m,n,visited1,utility);
+                         }
+                      }
+                    //return result[a]; 
+                    //break;
+                   }
+            }
+            }
+          }
+        int size=result[0].length();
+        int count1=0,count2=0,count3=0;    
+        for(int pn=0;pn<size;pn++)
+            if(result[0].charAt(pn)==' ')
+               count1++;
+        size=result[1].length();    
+        for(int pn=0;pn<size;pn++)
+            if(result[1].charAt(pn)==' ')
+               count2++; 
+        size=result[2].length();    
+        for(int pn=0;pn<size;pn++)
+            if(result[2].charAt(pn)==' ')
+               count3++;
+        if(count1>=count2)
+           {
+            if(count1>=count3)
+               return result[0];
+            else return result[2]; 
+           }
+        else if(count2>=count3)
+              return result[1];
+        return result[2];                                  
+   }
+   
+   
+class minimaxpoint
+{
+  public String result;
+  public double score;
+  minimaxpoint()
+  {
+
+  }
+  minimaxpoint(String result,double score)
+  {
+    this.result=result;
+    this.score=score;
+  }
+}
