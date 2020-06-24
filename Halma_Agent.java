@@ -2108,7 +2108,6 @@ public class fullgamealphabeta
         return "";                                                                                                                         
    } 
 
-   
 class minimaxpoint
 {
   public String result;
