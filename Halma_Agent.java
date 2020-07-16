@@ -2108,6 +2108,530 @@ public class fullgamealphabeta
         return "";                                                                                                                         
    } 
 
+   public static allinformation jumpgamewhite(char board[][],int i,int j,int visited[][],String prevresult,ArrayList<String> validmoves)
+   { String result[]={"","","","","","","",""};
+     int visited1[][]= new int[16][16];
+     Boolean flagjb=false,flag1jb,flag2jb,flag3jb,flag4jb,flag5jb;//r0=false,r1=false,r2=false,r3=false,r4=false,r5=false,r6=false,r7=false;
+     //System.out.println("In recurrsion");
+     String resultFinaljb[];
+     int finalx=19,finaly=19;
+     String x="",y="";
+     String result1="";
+     Boolean flagfinal=false;
+     ArrayList<Point> resulttemp=new ArrayList<Point>(); // or use array of user define objects thats is Point[] resulttemp=new Point[8];
+     allinformation[] resultallinfo=new allinformation[8];
+     visited1=visited.clone();
+     //System.out.println("In jumpgamewhite with i="+i+" j="+j);
+     /*for(int pnnr=0;pnnr<16;pnnr++)
+         {for(int pnnc=0;pnnc<16;pnnc++)
+              {
+                System.out.print(visited1[pnnr][pnnc]);
+               }
+               System.out.println();
+          }   */   
+    //pass k=0 and b=0 will call the function in main
+     int a=0;
+     int m,n; 
+     if(i-1>=0  && i-1<16 && j-1>=0 && j-1<16)
+        {
+         if(board[i-1][j-1]!='.')
+            {
+            if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+            {   //System.out.println("in side");
+                m=i-2;
+                n=j-2;
+                //System.out.println("i="+(i-2)+" j="+(j-2));
+                if(board[i-2][j-2]=='.' &&visited1[i-2][j-2]!=1)
+                   {//System.out.println(" Going into Jump 7");
+                    result[a]="J"+" "+j+","+i+" "+(j-2)+","+(i-2)+".";
+                    visited1[i-2][j-2]=1;
+                    result1=prevresult+result[a];
+                    flagfinal=true;
+                    flag1jb=true;
+                    flag2jb=true;
+                    flag3jb=true;
+                    flag4jb=true;
+                    flag5jb=true;
+                    if(m==15)
+                          { 
+                            if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag1jb=false;
+                            }
+                          }  
+                    if(m==14)
+                          {if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag2jb=false;
+                            }
+                          }
+                    if(m== 13)
+                          {
+                            if(n==12||n==13||n==14||n==15)
+                              {//System.out.println("Going into 2nd move");
+                                flag3jb=false;
+                              }
+                          }
+                    if(m==12)
+                           {if(n==13||n==14||n==15)
+                              {
+                                flag4jb=false;
+                              }
+                            }
+                    if(m==11)
+                           {if(n==14||n==15){
+                                flag5jb=false;
+                           }
+                          }
+                    if(flag1jb&&flag2jb&&flag3jb&&flag4jb&&flag5jb)
+                      {
+                        validmoves.add(result1);
+                        //System.out.print("Result added="+result1);
+                      }
+                    resultallinfo[a]=jumpgamewhite(board,m,n,visited1,result1,validmoves);
+                    visited1=resultallinfo[a].visited;
+                    validmoves=resultallinfo[a].validmoves;
+                   }
+            }
+            }
+        }
+     a++;  
+     if(i>=0  && i<16 && j-1>=0 && j-1<16)
+        {
+         if(board[i][j-1]!='.')
+            {
+            if(i>=0  && i<16 && j-2>=0 && j-2<16)
+            {   //System.out.println("in left");
+                m=i;
+                n=j-2;
+                //System.out.println("i="+(i)+" j="+(j-2));
+                if(board[i][j-2]=='.' &&visited1[i][j-2]!=1)
+                   {//System.out.println(" Going into Jump 8");
+                    result[a]="J"+" "+j+","+i+" "+(j-2)+","+(i)+".";
+                    visited1[i][j-2]=1;
+                    result1=prevresult+result[a];
+                    flagfinal=true;
+                    flag1jb=true;
+                    flag2jb=true;
+                    flag3jb=true;
+                    flag4jb=true;
+                    flag5jb=true;
+                    if(m==15)
+                          { 
+                            if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag1jb=false;
+                            }
+                          }  
+                    if(m==14)
+                          {if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag2jb=false;
+                            }
+                          }
+                    if(m== 13)
+                          {
+                            if(n==12||n==13||n==14||n==15)
+                              {//System.out.println("Going into 2nd move");
+                                flag3jb=false;
+                              }
+                          }
+                    if(m==12)
+                           {if(n==13||n==14||n==15)
+                              {
+                                flag4jb=false;
+                              }
+                            }
+                    if(m==11)
+                           {if(n==14||n==15){
+                                flag5jb=false;
+                           }
+                          }
+                    if(flag1jb&&flag2jb&&flag3jb&&flag4jb&&flag5jb)
+                      {
+                        validmoves.add(result1);
+                        //System.out.println("Result added="+result1);
+                      }
+                    resultallinfo[a]=jumpgamewhite(board,m,n,visited1,result1,validmoves);
+                    visited1=resultallinfo[a].visited;
+                    validmoves=resultallinfo[a].validmoves;
+                   }
+            }
+            }
+          }
+     a++;
+     if(i-1>=0  && i-1<16 && j>=0 && j<16)
+        {//System.out.println("in upper");
+         if(board[i-1][j]!='.')
+            {
+              m=i-2;
+              n=j;
+              //System.out.println("i="+(i-2)+" j="+(j));  
+            if(i-2>=0  && i-2<16 && j>=0 && j<16)
+            {   
+                //System.out.println("board"+board[i-2][j]);
+                //System.out.println("visited"+visited1[i-2][j]);
+                if(board[i-2][j]=='.' &&visited1[i-2][j]!=1)
+                   {//System.out.println(" Going into Jump 6");
+                    result[a]="J"+" "+j+","+i+" "+j+","+(i-2)+".";
+                    visited1[i-2][j]=1;
+                    result1=prevresult+result[a];
+                    flagfinal=true;
+                    flag1jb=true;
+                    flag2jb=true;
+                    flag3jb=true;
+                    flag4jb=true;
+                    flag5jb=true;
+                    if(m==15)
+                          { 
+                            if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag1jb=false;
+                            }
+                          }  
+                    if(m==14)
+                          {if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag2jb=false;
+                            }
+                          }
+                    if(m== 13)
+                          {
+                            if(n==12||n==13||n==14||n==15)
+                              {//System.out.println("Going into 2nd move");
+                                flag3jb=false;
+                              }
+                          }
+                    if(m==12)
+                           {if(n==13||n==14||n==15)
+                              {
+                                flag4jb=false;
+                              }
+                            }
+                    if(m==11)
+                           {if(n==14||n==15){
+                                flag5jb=false;
+                           }
+                          }
+                    if(flag1jb&&flag2jb&&flag3jb&&flag4jb&&flag5jb)
+                      {
+                        validmoves.add(result1);
+                        //System.out.println("Result added="+result1);
+                      }
+                    resultallinfo[a]=jumpgamewhite(board,m,n,visited1,result1,validmoves);
+                    visited1=resultallinfo[a].visited;
+                    validmoves=resultallinfo[a].validmoves;
+                   }
+            }
+            }
+        }     
+     a++;     
+     if(i-1>=0  && i-1<16 && j+1>=0 && j+1<16)
+        {//System.out.println("in north-east");
+         if(board[i-1][j+1]!='.')
+            {
+              m=i-2;
+              n=j+2;
+              //System.out.println("i="+(i-2)+" j="+(j+2));  
+            if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+            {   
+                if(board[i-2][j+2]=='.' &&visited1[i-2][j+2]!=1)
+                   {//System.out.println(" Going into Jump 1");
+                    result[a]="J"+" "+j+","+i+" "+(j+2)+","+(i-2)+".";
+                    visited1[i-2][j+2]=1;
+                    result1=prevresult+result[a];
+                    flagfinal=true;
+                    flag1jb=true;
+                    flag2jb=true;
+                    flag3jb=true;
+                    flag4jb=true;
+                    flag5jb=true;
+                    if(m==15)
+                          { 
+                            if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag1jb=false;
+                            }
+                          }  
+                    if(m==14)
+                          {if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag2jb=false;
+                            }
+                          }
+                    if(m== 13)
+                          {
+                            if(n==12||n==13||n==14||n==15)
+                              {//System.out.println("Going into 2nd move");
+                                flag3jb=false;
+                              }
+                          }
+                    if(m==12)
+                           {if(n==13||n==14||n==15)
+                              {
+                                flag4jb=false;
+                              }
+                            }
+                    if(m==11)
+                           {if(n==14||n==15){
+                                flag5jb=false;
+                           }
+                          }
+                    if(flag1jb&&flag2jb&&flag3jb&&flag4jb&&flag5jb)
+                      {
+                        validmoves.add(result1);
+                        //System.out.println("Result added="+result1);
+                      }
+                    resultallinfo[a]=jumpgamewhite(board,m,n,visited1,result1,validmoves);
+                    visited1=resultallinfo[a].visited;
+                    validmoves=resultallinfo[a].validmoves;                    
+                   }
+            }
+            }
+        }      
+      a++; 
+      if(i+1>=0  && i+1<16 && j-1>=0 && j-1<16)
+        {
+         if(board[i+1][j-1]!='.')
+            {
+            if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+            {   //System.out.println("in south-west");
+                m=i+2;
+                n=j-2;
+                //System.out.println("i="+(i+2)+" j="+(j-2));
+                if(board[i+2][j-2]=='.' &&visited1[i+2][j-2]!=1)
+                   {//System.out.println(" Going into Jump 5");
+                    result[a]="J"+" "+j+","+i+" "+(j-2)+","+(i+2)+".";
+                    visited1[i+2][j-2]=1;
+                    result1=prevresult+result[a];
+                    flagfinal=true;
+                    flag1jb=true;
+                    flag2jb=true;
+                    flag3jb=true;
+                    flag4jb=true;
+                    flag5jb=true;
+                    if(m==15)
+                          { 
+                            if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag1jb=false;
+                            }
+                          }  
+                    if(m==14)
+                          {if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag2jb=false;
+                            }
+                          }
+                    if(m== 13)
+                          {
+                            if(n==12||n==13||n==14||n==15)
+                              {//System.out.println("Going into 2nd move");
+                                flag3jb=false;
+                              }
+                          }
+                    if(m==12)
+                           {if(n==13||n==14||n==15)
+                              {
+                                flag4jb=false;
+                              }
+                            }
+                    if(m==11)
+                           {if(n==14||n==15){
+                                flag5jb=false;
+                           }
+                          }
+                    if(flag1jb&&flag2jb&&flag3jb&&flag4jb&&flag5jb)
+                      {
+                        validmoves.add(result1);
+                        //System.out.println("Result added="+result1);
+                      }
+                    resultallinfo[a]=jumpgamewhite(board,m,n,visited1,result1,validmoves);
+                    visited1=resultallinfo[a].visited;
+                    validmoves=resultallinfo[a].validmoves;
+                   }
+            }
+            }
+          }  
+      a++;  
+      if(i>=0  && i<16 && j+1>=0 && j+1<16)
+        {
+         if(board[i][j+1]!='.')
+            {
+            if(i>=0  && i<16 && j+2>=0 && j+2<16)
+            {   //System.out.println("in east");
+                m=i;
+                n=j+2;
+                //System.out.println("i="+(i)+" j="+(j+2));
+                if(board[i][j+2]=='.' &&visited1[i][j+2]!=1)
+                   {//System.out.println(" Going into Jump 2");
+                    result[a]="J"+" "+j+","+i+" "+(j+2)+","+(i)+".";
+                    visited1[i][j+2]=1;
+                    result1=prevresult+result[a];
+                    flagfinal=true;
+                    flag1jb=true;
+                    flag2jb=true;
+                    flag3jb=true;
+                    flag4jb=true;
+                    flag5jb=true;
+                    if(m==15)
+                          { 
+                            if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag1jb=false;
+                            }
+                          }  
+                    if(m==14)
+                          {if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag2jb=false;
+                            }
+                          }
+                    if(m== 13)
+                          {
+                            if(n==12||n==13||n==14||n==15)
+                              {//System.out.println("Going into 2nd move");
+                                flag3jb=false;
+                              }
+                          }
+                    if(m==12)
+                           {if(n==13||n==14||n==15)
+                              {
+                                flag4jb=false;
+                              }
+                            }
+                    if(m==11)
+                           {if(n==14||n==15){
+                                flag5jb=false;
+                           }
+                          }
+                    if(flag1jb&&flag2jb&&flag3jb&&flag4jb&&flag5jb)
+                      {
+                        validmoves.add(result1);
+                        //System.out.println("Result added="+result1);
+                      }
+                    resultallinfo[a]=jumpgamewhite(board,m,n,visited1,result1,validmoves);
+                    visited1=resultallinfo[a].visited;
+                    validmoves=resultallinfo[a].validmoves;
+                   }
+            }
+            }
+        }      
+      a++; 
+      if(i+1>=0  && i+1<16 && j>=0 && j<16)
+        {
+         if(board[i+1][j]!='.')
+            {
+            if(i+2>=0  && i+2<16 && j>=0 && j<16)
+            {   //System.out.println("in south");
+                m=i+2;
+                n=j;
+                //System.out.println("i="+(i+2)+" j="+(j));
+                if(board[i+2][j]=='.' &&visited1[i+2][j]!=1)
+                   {//System.out.println(" Going into Jump 4");
+                    result[a]="J"+" "+j+","+i+" "+(j)+","+(i+2)+".";
+                    visited1[i+2][j]=1;
+                    result1=prevresult+result[a];
+                    flagfinal=true;
+                    flag1jb=true;
+                    flag2jb=true;
+                    flag3jb=true;
+                    flag4jb=true;
+                    flag5jb=true;
+                    if(m==15)
+                          { 
+                            if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag1jb=false;
+                            }
+                          }  
+                    if(m==14)
+                          {if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag2jb=false;
+                            }
+                          }
+                    if(m== 13)
+                          {
+                            if(n==12||n==13||n==14||n==15)
+                              {//System.out.println("Going into 2nd move");
+                                flag3jb=false;
+                              }
+                          }
+                    if(m==12)
+                           {if(n==13||n==14||n==15)
+                              {
+                                flag4jb=false;
+                              }
+                            }
+                    if(m==11)
+                           {if(n==14||n==15){
+                                flag5jb=false;
+                           }
+                          }
+                    if(flag1jb&&flag2jb&&flag3jb&&flag4jb&&flag5jb)
+                      {
+                        validmoves.add(result1);
+                        //System.out.println("Result added="+result1);
+                      }
+                    resultallinfo[a]=jumpgamewhite(board,m,n,visited1,result1,validmoves);
+                    visited1=resultallinfo[a].visited;
+                    validmoves=resultallinfo[a].validmoves;
+                   }
+            }
+            }
+          }  
+      a++; 
+      if(i+1>=0  && i+1<16 && j+1>=0 && j+1<16)
+        {
+         if(board[i+1][j+1]!='.')
+            {
+            if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+            {   //System.out.println("in south-east");
+                m=i+2;
+                n=j+2;
+                //System.out.println("i="+(i+2)+" j="+(j+2));
+                if(board[i+2][j+2]=='.' &&visited1[i+2][j+2]!=1)
+                   {//System.out.println(" Going into Jump 8");
+                    result[a]="J"+" "+j+","+i+" "+(j+2)+","+(i+2)+".";
+                    visited1[i+2][j+2]=1;
+                    result1=prevresult+result[a];
+                    flagfinal=true;
+                    flag1jb=true;
+                    flag2jb=true;
+                    flag3jb=true;
+                    flag4jb=true;
+                    flag5jb=true;
+                    if(m==15)
+                          { 
+                            if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag1jb=false;
+                            }
+                          }  
+                    if(m==14)
+                          {if(n==11 ||n==12||n==13||n==14||n==15){
+                            flag2jb=false;
+                            }
+                          }
+                    if(m== 13)
+                          {
+                            if(n==12||n==13||n==14||n==15)
+                              {//System.out.println("Going into 2nd move");
+                                flag3jb=false;
+                              }
+                          }
+                    if(m==12)
+                           {if(n==13||n==14||n==15)
+                              {
+                                flag4jb=false;
+                              }
+                            }
+                    if(m==11)
+                           {if(n==14||n==15){
+                                flag5jb=false;
+                           }
+                          }
+                    if(flag1jb&&flag2jb&&flag3jb&&flag4jb&&flag5jb)
+                      {
+                        validmoves.add(result1);
+                        //System.out.println("Result added="+result1);
+                      }
+                    resultallinfo[a]=jumpgamewhite(board,m,n,visited1,result1,validmoves);
+                    visited1=resultallinfo[a].visited;
+                    validmoves=resultallinfo[a].validmoves;
+                   }
+            }
+            }
+          }         
+        return new allinformation(visited1,"",validmoves);                                                                                                                         
+   }
+
 class minimaxpoint
 {
   public String result;
