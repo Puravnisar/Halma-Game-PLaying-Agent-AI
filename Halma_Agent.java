@@ -3342,7 +3342,200 @@ public static allinformation jumpgamewhitecamp(char board[][],int i,int j,int vi
         }     
         return new allinformation(visited1,"",validmoves);                                                                                                                         
    }
- 
+  public static allinformation jumpgameblackcamp(char board[][],int i,int j,int visited[][],String prevresult,ArrayList<String> validmoves)
+   { String result[]={"","","","","","","",""};
+     int visited1[][]= new int[16][16];
+     Boolean flagjb=false,flag1jb,flag2jb,flag3jb,flag4jb,flag5jb;//r0=false,r1=false,r2=false,r3=false,r4=false,r5=false,r6=false,r7=false;
+     //System.out.println("In recurrsion");
+     String resultFinaljb[];
+     int finalx=19,finaly=19;
+     String x="",y="";
+     String result1="";
+     Boolean flagfinal=false;
+     ArrayList<Point> resulttemp=new ArrayList<Point>(); // or use array of user define objects thats is Point[] resulttemp=new Point[8];
+     allinformation[] resultallinfo=new allinformation[8];
+     visited1=visited;
+     //System.out.println("In jumpgameblackcamp with i="+i+" j="+j);
+    //pass k=0 and b=0 will call the function in main
+     int a=0;
+     int m,n; 
+        if(i+1>=0  && i+1<16 && j+1>=0 && j+1<16)
+        {//System.out.println("in diagonal");
+         if(board[i+1][j+1]!='.')
+            {
+              m=i+2;
+              n=j+2;  
+            if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+            {   
+                if(board[i+2][j+2]=='.' &&visited1[i+2][j+2]!=1)
+                   {//System.out.println(" Going into Jump 1");
+                    result[a]="J"+" "+j+","+i+" "+(j+2)+","+(i+2)+".";
+                    visited1[i+2][j+2]=1;
+                    result1=prevresult+result[a];
+                    validmoves.add(result1);
+                    if(m==0)
+                          { 
+                            if(n==0||n==1||n==2||n==3||n==4){
+                            resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                            visited1=resultallinfo[a].visited;
+                            validmoves=resultallinfo[a].validmoves;
+                            }
+                          }  
+                    if(m==1)
+                          {if(n==0||n==1||n==2||n==3||n==4){
+                            resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                            visited1=resultallinfo[a].visited;
+                            validmoves=resultallinfo[a].validmoves;
+                            }
+                          }
+                    if(m==2)
+                          {
+                            if(n==0||n==1||n==2||n==3)
+                              {
+                                resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                                visited1=resultallinfo[a].visited;
+                                validmoves=resultallinfo[a].validmoves;
+                              }
+                          }
+                    if(m==3)
+                           {if(n==0||n==1||n==2)
+                              {
+                                resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                                visited1=resultallinfo[a].visited;
+                                validmoves=resultallinfo[a].validmoves;
+                              }
+                            }
+                    if(m==4)
+                           {if(n==0||n==1){
+                              resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                              visited1=resultallinfo[a].visited;
+                              validmoves=resultallinfo[a].validmoves;
+                           }
+                          }
+                   }
+            }
+            }
+        }
+      a++; 
+      if(i+1>=0  && i+1<16 && j>=0 && j<16)
+        {
+         if(board[i+1][j]!='.')
+            {
+            if(i+2>=0  && i+2<16 && j>=0 && j<16)
+            {   //System.out.println("in below");
+                m=i+2;
+                n=j;
+                if(board[i+2][j]=='.' &&visited1[i+2][j]!=1)
+                   {//System.out.println(" Going into Jump 2");
+                    result[a]="J"+" "+j+","+i+" "+(j)+","+(i+2)+".";
+                    visited1[i+2][j]=1;
+                    result1=prevresult+result[a];
+                    validmoves.add(result1);
+                    if(m==0)
+                          { 
+                            if(n==0||n==1||n==2||n==3||n==4){
+                            resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                            visited1=resultallinfo[a].visited;
+                            validmoves=resultallinfo[a].validmoves;
+                            }
+                          }  
+                    if(m==1)
+                          {if(n==0||n==1||n==2||n==3||n==4){
+                            resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                            visited1=resultallinfo[a].visited;
+                            validmoves=resultallinfo[a].validmoves;
+                            }
+                          }
+                    if(m==2)
+                          {
+                            if(n==0||n==1||n==2||n==3)
+                              {
+                                resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                                visited1=resultallinfo[a].visited;
+                                validmoves=resultallinfo[a].validmoves;
+                              }
+                          }
+                    if(m==3)
+                           {if(n==0||n==1||n==2)
+                              {
+                                resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                                visited1=resultallinfo[a].visited;
+                                validmoves=resultallinfo[a].validmoves;
+                              }
+                            }
+                    if(m==4)
+                           {if(n==0||n==1){
+                              resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                              visited1=resultallinfo[a].visited;
+                              validmoves=resultallinfo[a].validmoves;
+                           }
+                          }
+                   }
+            }
+            }
+        }
+      a++;  
+      if(i>=0  && i<16 && j+1>=0 && j+1<16)
+        {
+         if(board[i][j+1]!='.')
+            {
+            if(i>=0  && i<16 && j+2>=0 && j+2<16)
+            {   //System.out.println("in left");
+                m=i;
+                n=j+2;
+                if(board[i][j+2]=='.' &&visited1[i][j+2]!=1)
+                   {//System.out.println(" Going into Jump 8");
+                    result[a]="J"+" "+j+","+i+" "+(j+2)+","+(i)+".";
+                    visited1[i][j+2]=1;
+                    result1=prevresult+result[a];
+                    validmoves.add(result1);
+                    if(m==0)
+                          { 
+                            if(n==0||n==1||n==2||n==3||n==4){
+                            resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                            visited1=resultallinfo[a].visited;
+                            validmoves=resultallinfo[a].validmoves;
+                            }
+                          }  
+                    if(m==1)
+                          {if(n==0||n==1||n==2||n==3||n==4){
+                            resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                            visited1=resultallinfo[a].visited;
+                            validmoves=resultallinfo[a].validmoves;
+                            }
+                          }
+                    if(m==2)
+                          {
+                            if(n==0||n==1||n==2||n==3)
+                              {
+                                resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                                visited1=resultallinfo[a].visited;
+                                validmoves=resultallinfo[a].validmoves;
+                              }
+                          }
+                    if(m==3)
+                           {if(n==0||n==1||n==2)
+                              {
+                                resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                                visited1=resultallinfo[a].visited;
+                                validmoves=resultallinfo[a].validmoves;
+                              }
+                            }
+                    if(m==4)
+                           {if(n==0||n==1){
+                              resultallinfo[a]=jumpgameblackcamp(board,m,n,visited1,result1,validmoves);
+                              visited1=resultallinfo[a].visited;
+                              validmoves=resultallinfo[a].validmoves;
+                           }
+                          }
+                   }
+            }
+            }
+          }       
+        return new allinformation(visited1,"",validmoves);                                                                                                                         
+   }
+
+
 class minimaxpoint
 {
   public String result;
