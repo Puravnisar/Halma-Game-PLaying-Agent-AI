@@ -3535,7 +3535,2114 @@ public static allinformation jumpgamewhitecamp(char board[][],int i,int j,int vi
         return new allinformation(visited1,"",validmoves);                                                                                                                         
    }
 
+   public static ArrayList<String> validmoveswhite(char board[][])
+   {
+    Boolean flagwhitereach=true;
+    int[][] visited=new int[16][16];
+    int[][] visitedinitial=new int[16][16];
+    int row,i,m,n;
+    String result="",temp="";
+    ArrayList<String> validmoves=new ArrayList<String>();
+    String whitecamp="14,11 15,11 13,12 14,12 15,12 12,13 13,13 14,13 15,13 11,14 12,14 13,14 14,14 11,15 12,15 13,15 14,15 15,15";
+    for(int j=0 ;j<16;j++)
+           {
+            for(int k=0;k<16;k++)
+               { //System.out.println(i+" "+j);
+                 if(board[j][k]!='.')
+                    visitedinitial[j][k]=1;
+               } 
+           }
+    allinformation knn=new allinformation(visited,"",validmoves);
+          /*row=15;
+          for(row=15;row>=0;row--)
+          {  
+           for(int column=15;column>=0;column--)
+               { 
+                if(board[row][column]=='W')
+                  { visited[row][column]=1;
+                    knn=jumpgamewhite(board,row,column,visited,utility,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgamewhitecamp(board,row,column,visited,utility,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
 
+                       }
+
+                    if(knn.validmoves.size()!=0)
+                       {
+                        System.out.println("in if loop "+row+" "+column);
+                        if(board[row-1][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row-1);
+                             validmoves.add(result);
+                          }
+                        if(board[row][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row);
+                             validmoves.add(result);
+                          }
+                        if(board[row-1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row-1);
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              }
+            } */ 
+            row=15;
+            for(int column=15;column>=11;column--)
+               { 
+                if(board[row][column]=='W')
+                  { visited[row][column]=1;
+                    knn=jumpgamewhite(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgamewhitecamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==11)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row-1][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row-1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              } 
+            row=14;
+            for(int column=15;column>=11;column--)
+               { 
+                if(board[row][column]=='W')
+                  { visited[row][column]=1;
+                    knn=jumpgamewhite(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgamewhitecamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==11)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row-1][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row-1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              }
+            row=13;
+            for(int column=15;column>=12;column--)
+               { 
+                if(board[row][column]=='W')
+                  { visited[row][column]=1;
+                    knn=jumpgamewhite(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgamewhitecamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==12)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row-1][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row-1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              }
+            row=12;
+            for(int column=15;column>=13;column--)
+               { 
+                if(board[row][column]=='W')
+                  { visited[row][column]=1;
+                    knn=jumpgamewhite(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgamewhitecamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==13)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row-1][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row-1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              }
+            row=11;
+            for(int column=15;column>=14;column--)
+               { 
+                if(board[row][column]=='W')
+                  { visited[row][column]=1;
+                    knn=jumpgamewhite(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgamewhitecamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==14)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row-1][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column-1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column-1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row-1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row-1)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              } 
+            if(validmoves.size()==0)
+            {  
+            for(i=8;i>=0;i--)
+              {
+                for(int j=15;j>=0;j--)
+                { flagwhitereach=true;
+                  if(i<5 &&j<5)
+                     {
+                      if(i==4)
+                          { 
+                            if(j==0||j==1){
+                            flagwhitereach=false;
+                            }
+                          }  
+                      else if(i==3)
+                          {if(j==0||j==1||j==2){
+                            flagwhitereach=false;
+                            }
+                          }
+                      else if(i==2)
+                          {
+                            if(j==0||j==1||j==2||j==3)
+                              {//System.out.println("Going into 2nd move");
+                                flagwhitereach=false;
+                              }
+                          }
+                      else if(i==1)
+                           {if(j==0||j==1||j==2||j==3||j==4)
+                              {
+                                flagwhitereach=false;
+                              }
+                            }
+                      else if(i==0)
+                           {if(j==0||j==1||j==2||j==3||j==4){
+                                flagwhitereach=false;
+                           }
+                          }
+                     }
+                  if(flagwhitereach==true)
+                  {    
+                  if(board[i][j]=='W')
+                  {   //System.out.println(" Current i and j="+i+" "+j);
+                        if(i-1>= 0 && i-1<16 && j-1>=0 && j-1<16)
+                          {
+                            if(board[i-1][j-1]=='.')
+                            {   //System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            { m=i-2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                          }
+                        if(i-1>=0  && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            { //System.out.println(" Going into . 2");
+                              result="E"+" "+j+","+i+" "+j+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            { m=i-2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i>=0 && i <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i][j-1]=='.')
+                            {   //System.out.println(" Going into . 3");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+i+".";
+                              validmoves.add(result);
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            { m=i;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }   
+                        if(i-1>=0 && i-1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {   //System.out.println(" Going into . 4");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            { m=i-2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i+1][j-1]=='.')
+                            {   //System.out.println(" Going into . 5");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            { m=i+2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }   
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {  //System.out.println(" Going into . 6");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+i+".";
+                              validmoves.add(result);
+                            }
+                            else if(i>=0 && i<16 && j+2>=0 && j+2<16)
+                            { m=i;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j>=0 && j<16)
+                           {
+                            if(board[i+1][j]=='.')
+                            {   //System.out.println(" Going into . 7");
+                              result="E"+" "+j+","+i+" "+j+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j>=0 && j<16)
+                            {
+                              m=i+2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                     {
+                                      for(int pnnc=0;pnnc<16;pnnc++)
+                                        {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                        }
+                                     }
+                                 }
+                              }
+                           }
+                        if(i+1>=0 && i+1 <16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i+1][j+1]=='.')
+                            {   //System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            { m=i+2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }   
+                  }//board is equal to w   
+                  }//flagwhitereach
+                }
+              }
+            for(i=15;i>=9;i--)
+              {
+                for(int j=8;j>=0;j--)
+                {
+                  if(board[i][j]=='W')
+                  {     //System.out.println(" Current i and j="+i+" "+j);
+                        if(i-1>= 0 && i-1<16 && j-1>=0 && j-1<16)
+                          {
+                            if(board[i-1][j-1]=='.')
+                            {   //System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            { m=i-2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                          }
+                        if(i-1>=0  && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            { //System.out.println(" Going into . 2");
+                              result="E"+" "+j+","+i+" "+j+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            { m=i-2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i>=0 && i <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i][j-1]=='.')
+                            {   //System.out.println(" Going into . 3");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+i+".";
+                              validmoves.add(result);
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            { m=i;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }   
+                        if(i-1>=0 && i-1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {   //System.out.println(" Going into . 4");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            { m=i-2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i+1][j-1]=='.')
+                            {   //System.out.println(" Going into . 5");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            { m=i+2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }   
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {  //System.out.println(" Going into . 6");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+i+".";
+                              validmoves.add(result);
+                            }
+                            else if(i>=0 && i<16 && j+2>=0 && j+2<16)
+                            { m=i;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j>=0 && j<16)
+                           {
+                            if(board[i+1][j]=='.')
+                            {   //System.out.println(" Going into . 7");
+                              result="E"+" "+j+","+i+" "+j+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j>=0 && j<16)
+                            {
+                              m=i+2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                     {
+                                      for(int pnnc=0;pnnc<16;pnnc++)
+                                        {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                        }
+                                     }
+                                 }
+                              }
+                           }
+                        if(i+1>=0 && i+1 <16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i+1][j+1]=='.')
+                            {   //System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            { m=i+2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           } 
+                  }
+                }
+              }
+            for(i=9;i<16;i++)
+              {
+                for(int j=9;j<16;j++)
+                {
+                  if(board[i][j]=='W')
+                  {     //System.out.println(" Current i and j="+i+" "+j);
+                        if(i-1>= 0 && i-1<16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i-1][j-1]=='.')
+                            {   //System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                 validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            {
+                              m=i-2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+n+","+(m);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }   
+                              }
+                            }
+                          }
+                        if(i-1>=0  && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            {   //System.out.println(" Going into . 2");
+                              result="E"+" "+j+","+i+" "+j+","+(i-1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              //System.out.println("temp="+temp);
+                              if(!whitecamp.contains(temp))
+                                  validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            { m=i-2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }    
+                              }
+                            }
+                           }
+                        if(i>=0 && i <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i][j-1]=='.')
+                            {   //System.out.println(" Going into . 3");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+i+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                 validmoves.add(result);
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            {
+                              m=i;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }   
+                              }
+                            }
+                           }      
+                        if(i-1>=0 && i-1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {  //System.out.println(" Going into . 4");
+                               result="E"+" "+j+","+i+" "+(j+1)+","+(i-1)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                   validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            { m=i-2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }    
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i+1][j-1]=='.')
+                            {   //System.out.println(" Going into . 5");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                 validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            {
+                              m=i+2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }   
+                              }
+                            }
+                           }   
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {   //System.out.println(" Going into . 6");
+                                result="E"+" "+j+","+i+" "+(j+1)+","+i+".";
+                                temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                                if(!whitecamp.contains(temp))
+                                    validmoves.add(result);
+                            }
+                            else if(i>=0 && i<16 && j+2>=0 && j+2<16)
+                            {
+                              m=i;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }    
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j>=0 && j<16)
+                           {
+                            if(board[i+1][j]=='.')
+                            {   //System.out.println(" Going into . 7");
+                              result="E"+" "+j+","+i+" "+j+","+(i+1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                 validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j>=0 && j<16)
+                            {
+                              m=i+2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }   
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i+1][j+1]=='.')
+                            {   //System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                  validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            {
+                              m=i+2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  knn=jumpgamewhite(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }    
+                              }
+                            }
+                           }  
+                  }
+                }
+              }//ending of outer for
+            }//ending of if(validmoves.size()==0)
+            return validmoves;           
+   }
+
+   public static ArrayList<String> validmovesblack(char board[][])
+  { 
+    Boolean flagblackreach=true;
+    int[][] visited=new int[16][16];
+    int[][] visitedinitial=new int[16][16];
+    int row,i,m,n;
+    String result="",temp="";
+    ArrayList<String> validmoves=new ArrayList<String>();
+    String blackcamp="0,0 1,0 2,0 3,0 4,0 0,1 1,1 2,1 3,1 4,1 0,2 1,2 2,2 3,2 0,3 1,3 2,3 0,4 1,4";
+    for(int j=0 ;j<16;j++)
+           {
+            for(int k=0;k<16;k++)
+               { //System.out.println(i+" "+j);
+                 if(board[j][k]!='.')
+                    visitedinitial[j][k]=1;
+               } 
+           } 
+    
+    allinformation knn=new allinformation(visited,"",validmoves); 
+    row=0;
+            for(int column=0;column<5;column++)
+               { 
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    knn=jumpgameblack(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgameblackcamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==11)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              } 
+    row=1;
+            for(int column=0;column<5;column++)
+               { 
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    knn=jumpgameblack(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgameblackcamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==11)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              }
+    row=2;
+            for(int column=0;column<4;column++)
+               { 
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    knn=jumpgameblack(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgameblackcamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==12)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              }
+    row=3;
+            for(int column=0;column<3;column++)
+               { 
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    knn=jumpgameblack(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgameblackcamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==13)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              }
+    row=4;
+            for(int column=0;column<2;column++)
+               { 
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    knn=jumpgameblack(board,row,column,visited,"",validmoves);
+                    validmoves=knn.validmoves;
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(knn.validmoves.size()==0)
+                       {
+                           knn=jumpgameblackcamp(board,row,column,visited,"",validmoves);
+                           validmoves=knn.validmoves;
+                           for(int pnnr=0;pnnr<16;pnnr++)
+                              {
+                                for(int pnnc=0;pnnc<16;pnnc++)
+                                    {
+                                     visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                    }
+                              }
+                       }
+                    if(knn.validmoves.size()==0|| column==14)
+                       {
+                        //System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1)+".";
+                             validmoves.add(result);
+                          }
+                        if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row)+".";
+                             validmoves.add(result);
+                          }
+                      }
+                    
+                }
+              } 
+            if(validmoves.size()==0)
+            {  
+            for(i=7;i<16;i++)
+              {
+                for(int j=0;j<16;j++)
+                { 
+                  if(i==11)
+                          { 
+                            if(j==14||j==15){
+                            flagblackreach=false;
+                            }
+                          }  
+                      else if(i==12)
+                          {if(j==13||j==14||j==15){
+                            flagblackreach=false;
+                            }
+                          }
+                      else if(i==13)
+                          {
+                            if(j==12||j==13||j==14||j==15)
+                              {//System.out.println("Going into 2nd move");
+                                flagblackreach=false;
+                              }
+                          }
+                      else if(i==14)
+                           {if(j==11||j==12||j==13||j==14||j==15)
+                              {
+                                flagblackreach=false;
+                              }
+                            }
+                      else if(i==15)
+                           {if(j==11||j==12||j==13||j==14||j==15){
+                                flagblackreach=false;
+                           }
+                          }
+                  if(flagblackreach==true)
+                  {        
+                  if(board[i][j]=='B')
+                  {   //System.out.println(" Current i and j="+i+" "+j);
+                      if(i+1>=0 && i+1 <16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i+1][j+1]=='.')
+                            {   //System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            { m=i+2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j>=0 && j<16)
+                           {
+                            if(board[i+1][j]=='.')
+                            {   //System.out.println(" Going into . 2");
+                              result="E"+" "+j+","+i+" "+j+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j>=0 && j<16)
+                            {
+                              m=i+2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                     {
+                                      for(int pnnc=0;pnnc<16;pnnc++)
+                                        {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                        }
+                                     }
+                                 }
+                              }
+                           } 
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {  //System.out.println(" Going into . 3");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+i+".";
+                              validmoves.add(result);
+                            }
+                            else if(i>=0 && i<16 && j+2>=0 && j+2<16)
+                            { m=i;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i+1][j-1]=='.')
+                            {   //System.out.println(" Going into . 4");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            { m=i+2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }                                   
+                        if(i-1>=0 && i-1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {   //System.out.println(" Going into . 5")+".";
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            { m=i-2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i>=0 && i <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i][j-1]=='.')
+                            {   //System.out.println(" Going into . 6")+".";
+                              result="E"+" "+j+","+i+" "+(j-1)+","+i+".";
+                              validmoves.add(result);
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            { m=i;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }         
+                        if(i-1>=0  && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            { //System.out.println(" Going into . 7")+".";
+                              result="E"+" "+j+","+i+" "+j+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            { m=i-2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }   
+                        if(i-1>= 0 && i-1<16 && j-1>=0 && j-1<16)
+                          {
+                            if(board[i-1][j-1]=='.')
+                            {   //System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            { m=i-2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                          }        
+                  }
+                 } 
+                }
+              }
+            for(i=0;i<7;i++)
+              {
+                for(int j=7;j<16;j++)
+                {
+                  if(board[i][j]=='B')
+                  {     //System.out.println(" Current i and j="+i+" "+j);
+                        if(i+1>=0 && i+1 <16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i+1][j+1]=='.')
+                            {   //System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            { m=i+2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j>=0 && j<16)
+                           {
+                            if(board[i+1][j]=='.')
+                            {   //System.out.println(" Going into . 2");
+                              result="E"+" "+j+","+i+" "+j+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j>=0 && j<16)
+                            {
+                              m=i+2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                     {
+                                      for(int pnnc=0;pnnc<16;pnnc++)
+                                        {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                        }
+                                     }
+                                 }
+                              }
+                           } 
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {  //System.out.println(" Going into . 3");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+i+".";
+                              validmoves.add(result);
+                            }
+                            else if(i>=0 && i<16 && j+2>=0 && j+2<16)
+                            { m=i;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i+1][j-1]=='.')
+                            {   //System.out.println(" Going into . 4");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            { m=i+2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }                                   
+                        if(i-1>=0 && i-1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {   //System.out.println(" Going into . 5");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            { m=i-2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }
+                        if(i>=0 && i <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i][j-1]=='.')
+                            {   //System.out.println(" Going into . 6");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+i+".";
+                              validmoves.add(result);
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            { m=i;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }         
+                        if(i-1>=0  && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            { //System.out.println(" Going into . 7");
+                              result="E"+" "+j+","+i+" "+j+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            { m=i-2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                           }   
+                        if(i-1>= 0 && i-1<16 && j-1>=0 && j-1<16)
+                          {
+                            if(board[i-1][j-1]=='.')
+                            {   //System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1)+".";
+                              validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            { m=i-2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              { //System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+(n)+","+(m)+".";
+                               validmoves.add(result);
+                               visited[m][n]=1;
+                               knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                               validmoves=knn.validmoves;
+                               for(int pnnr=0;pnnr<16;pnnr++)
+                                   {
+                                    for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                   }
+                              }
+                            }
+                          }        
+                  }
+                }
+              }
+            for(i=6;i>=0;i--)
+              {
+                for(int j=6;j>=0;j--)
+                {
+                  if(board[i][j]=='B')
+                  {     //System.out.println(" Current i and j="+i+" "+j);
+                        if(i+1>=0 && i+1 <16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i+1][j+1]=='.')
+                            {   //System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            {
+                              m=i+2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!blackcamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  visited[m][n]=1;
+                                  knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }    
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j>=0 && j<16)
+                           {
+                            if(board[i+1][j]=='.')
+                            {   //System.out.println(" Going into . 2");
+                              result="E"+" "+j+","+i+" "+j+","+(i+1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                 validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j>=0 && j<16)
+                            {
+                              m=i+2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!blackcamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  visited[m][n]=1;
+                                  knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }   
+                              }
+                            }
+                           }
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {   //System.out.println(" Going into . 3");
+                                result="E"+" "+j+","+i+" "+(j+1)+","+i+".";
+                                temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                                if(!blackcamp.contains(temp))
+                                    validmoves.add(result);
+                            }
+                            else if(i>=0 && i<16 && j+2>=0 && j+2<16)
+                            {
+                              m=i;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!blackcamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  visited[m][n]=1;
+                                  knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }    
+                              }
+                            }
+                           }                                                                                   
+                        if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i+1][j-1]=='.')
+                            {   //System.out.println(" Going into . 4");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                 validmoves.add(result);
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            {
+                              m=i+2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!blackcamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  visited[m][n]=1;
+                                  knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }   
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {  //System.out.println(" Going into . 5");
+                               result="E"+" "+j+","+i+" "+(j+1)+","+(i-1)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!blackcamp.contains(temp))
+                                   validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            { m=i-2;
+                              n=j+2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!blackcamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  visited[m][n]=1;
+                                  knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }    
+                              }
+                            }
+                           }      
+                        if(i>=0 && i <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i][j-1]=='.')
+                            {   //System.out.println(" Going into . 6");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+i+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                 validmoves.add(result);
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            {
+                              m=i;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!blackcamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  visited[m][n]=1;
+                                  knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }   
+                              }
+                            }
+                           }       
+                        if(i-1>=0  && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            {   //System.out.println(" Going into . 7");
+                              result="E"+" "+j+","+i+" "+j+","+(i-1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              //System.out.println("temp="+temp);
+                              if(!blackcamp.contains(temp))
+                                  validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            { m=i-2;
+                              n=j;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!blackcamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  visited[m][n]=1;
+                                  knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }    
+                              }
+                            }
+                           }   
+                        if(i-1>= 0 && i-1<16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i-1][j-1]=='.')
+                            {   //System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1)+".";
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                 validmoves.add(result);
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            {
+                              m=i-2;
+                              n=j-2;
+                              if(board[m][n]=='.')
+                              {//System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+n+","+(m)+".";
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               //System.out.println("temp="+temp);
+                               if(!blackcamp.contains(temp))
+                                 {
+                                  validmoves.add(result);
+                                  visited[m][n]=1;
+                                  knn=jumpgameblack(board,m,n,visited,result,validmoves);
+                                  validmoves=knn.validmoves;
+                                  for(int pnnr=0;pnnr<16;pnnr++)
+                                      {
+                                       for(int pnnc=0;pnnc<16;pnnc++)
+                                       {
+                                         visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                                       }
+                                      }
+                                  }   
+                              }
+                            }
+                          }      
+                  }
+                }
+              }//ending of outer for
+            }//ending of if(validmoves.size()==0) 
+       return validmoves;             
+  }
+
+   
 class minimaxpoint
 {
   public String result;
