@@ -5642,6 +5642,99 @@ public static allinformation jumpgamewhitecamp(char board[][],int i,int j,int vi
        return validmoves;             
   }
 
+   public static double evalution(char board[][],String player)
+   { //if white our score should be less and black score should be high so if we minus black score from our score,then in this mode we are max player we select the score which is highest
+    double score=0;
+    if(player.equals("WHITE"))
+    {  
+      for (int i=0;i<16;i++)
+            {
+              for(int j=0;j<16;j++)
+              {
+                if(board[i][j]=='W')
+                {
+                  score=score-Math.sqrt(i*i+j*j);
+                }
+                else if(board[i][j]=='B')
+                {
+                  score=score+Math.sqrt((i-15)*(i-15)+(j-15)*(j-15));
+                }  
+              }
+            }
+     }
+     else
+     {
+       for (int i=0;i<16;i++)
+            {
+              for(int j=0;j<16;j++)
+              {
+                if(board[i][j]=='W')
+                {
+                  score=score+Math.sqrt(i*i+j*j);
+                }
+                else if(board[i][j]=='B')
+                {
+                  score=score-Math.sqrt((i-15)*(i-15)+(j-15)*(j-15));
+                }  
+              }
+            }
+     }
+     //System.out.println("Score in evalution"+score);
+     return score;       
+   }
+
+   public static String minimax(String player,char board[][])
+   {//ArrayList<String> validwhite= new ArrayList<String>();
+    //ArrayList<String> validblacks= new ArrayList<String>();
+    System.out.println("In minimax");
+    ArrayList<String> validfinal= new ArrayList<String>();
+    int depth=0,finalindex=0;
+    double finalscore=Double.MIN_VALUE,score;
+    //minimaxpoint mn=new minimaxpoint;
+    if(player.equals("WHITE"))
+    {
+       validfinal=validmoveswhite(board);
+       int len=validfinal.size();
+       for(int i=0;i<len;i++)
+           {
+            System.out.println(validfinal.get(i));
+           }
+       for(int i=0;i<len;i++)
+           { System.out.println("move"+validfinal.get(i));
+            score=minvalue(board,"BLACK",validfinal.get(i),depth+1,Double.MIN_VALUE,Double.MAX_VALUE);
+            System.out.println("Score"+score);
+            if(finalscore<score)
+            {
+              finalscore=score;
+              finalindex=i;
+            }
+            System.out.println("Final Score"+finalscore);
+           }
+
+    }
+    else
+    {
+      validfinal=validmovesblack(board);
+       int len=validfinal.size();
+       for(int i=0;i<len;i++)
+           {
+            System.out.println(validfinal.get(i));
+           }
+       for(int i=0;i<len;i++)
+           {System.out.println("move"+validfinal.get(i));
+            score=minvalue(board,"WHITE",validfinal.get(i),depth+1,Double.MIN_VALUE,Double.MAX_VALUE);
+            System.out.println("Score"+score);
+            if(finalscore<score)
+            {
+              finalscore=score;
+              finalindex=i;
+            }
+            System.out.println("Final Score"+finalscore);
+           }    
+    }
+    return validfinal.get(finalindex);  
+   }
+
    
 class minimaxpoint
 {
