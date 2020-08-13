@@ -5735,6 +5735,196 @@ public static allinformation jumpgamewhitecamp(char board[][],int i,int j,int vi
     return validfinal.get(finalindex);  
    }
 
+   public static double minvalue(char board[][], String player, String previousmove,int depth,double alpha,double beta)
+   { 
+    //System.out.println("In minvalue "+depth+"player "+player);
+    String minplayer=player;
+    String maxplayer;
+    if(player.equals("WHITE"))
+       maxplayer="BLACK";
+    else maxplayer="WHITE"; 
+    if(depth>=5)
+      {
+            return evalution(board,maxplayer);
+      }
+    if(board[0][0]=='W'&&board[0][1]=='W'&&board[0][2]=='W'&&board[0][3]=='W'&&board[0][4]=='W')
+       if(board[1][0]=='W'&&board[1][1]=='W'&&board[1][2]=='W'&&board[1][3]=='W'&&board[1][4]=='W')
+          if(board[2][0]=='W'&&board[2][1]=='W'&&board[2][2]=='W'&&board[2][3]=='W')
+             if(board[3][0]=='W'&&board[3][1]=='W'&&board[3][2]=='W')
+                if(board[4][0]=='W'&&board[4][1]=='W')
+                   return evalution(board,maxplayer);
+    if(board[15][15]=='B'&&board[15][14]=='B'&&board[15][13]=='B'&&board[15][12]=='B'&&board[15][11]=='B')
+       if(board[14][15]=='B'&&board[14][14]=='B'&&board[14][13]=='B'&&board[14][12]=='B'&&board[14][11]=='B')
+          if(board[13][15]=='B'&&board[13][14]=='B'&&board[13][13]=='B'&&board[13][12]=='B')
+             if(board[12][15]=='B'&&board[12][14]=='B'&&board[12][13]=='B')
+                if(board[11][15]=='B'&&board[11][14]=='B')
+                    return evalution(board,maxplayer);
+                     
+      char minboard[][]=new char[16][16];
+      String temp="";
+      String result1=previousmove;
+      int fromx,fromy,tox,toy,comma;
+      ArrayList<String> minvalid=new ArrayList<String>();
+      double score,finalscore=Double.MAX_VALUE;
+      for(int i=0;i<16;i++)
+      {
+        for(int j=0;j<16;j++)
+        {
+          minboard[i][j]=board[i][j];
+        }
+      }
+      //temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+      //System.out.println("result1="+result1);
+      comma=result1.indexOf(",");
+      fromx=Integer.parseInt(result1.substring(result1.indexOf(" ")+1,comma));
+      fromy=Integer.parseInt(result1.substring(result1.indexOf(",")+1,result1.indexOf(" ",comma)));
+      tox=Integer.parseInt(result1.substring(result1.lastIndexOf(" ")+1,result1.lastIndexOf(",")));
+      toy=Integer.parseInt(result1.substring(result1.lastIndexOf(",")+1,result1.length()-1));
+      if(player.equals("BLACK"))
+      {
+       //System.out.println("In min black player");  
+       minboard[tox][toy]='W';
+       minboard[fromx][fromy]='.';
+       minvalid=validmovesblack(minboard);
+       int len=minvalid.size();
+       //System.out.println("Min valid moves length black"+len);
+         for(int i=0;i<len;i++)
+                {     
+                      score=maxvalue(minboard,"WHITE",minvalid.get(i),depth+1,alpha,beta);
+                      if(finalscore>score)
+                         {
+                          finalscore=score;
+                         } 
+                      if(beta>finalscore)
+                        {
+                          beta=finalscore;
+                        }
+                      if (alpha >= beta) break;         
+                }
+      }             
+      else
+      {
+        minboard[tox][toy]='B';
+        minboard[fromx][fromy]='.';
+        minvalid=validmoveswhite(minboard);
+        int len=minvalid.size();
+        //System.out.println("Min valid moves length white"+len);
+        for(int i=0;i<len;i++)
+                {      score=maxvalue(minboard,"BLACK",minvalid.get(i),depth+1,alpha,beta);
+                      if(finalscore>score)
+                         {
+                          finalscore=score;
+                         }
+                      if(beta>finalscore)
+                        {
+                          beta=finalscore;
+                        }
+                      if (alpha >= beta) break;     
+                }
+        }            
+     return finalscore; 
+
+   }
+
+   public static double maxvalue(char board[][], String player, String previousmove,int depth,double alpha,double beta)
+   { 
+    //System.out.println("In maxvalue "+depth+"player "+player);
+    if(depth>=5)
+      {
+            return evalution(board,player);
+      }
+    if(board[0][0]=='W'&&board[0][1]=='W'&&board[0][2]=='W'&&board[0][3]=='W'&&board[0][4]=='W')
+       if(board[1][0]=='W'&&board[1][1]=='W'&&board[1][2]=='W'&&board[1][3]=='W'&&board[1][4]=='W')
+          if(board[2][0]=='W'&&board[2][1]=='W'&&board[2][2]=='W'&&board[2][3]=='W')
+             if(board[3][0]=='W'&&board[3][1]=='W'&&board[3][2]=='W')
+                if(board[4][0]=='W'&&board[4][1]=='W')
+                   return evalution(board,player);
+    if(board[15][15]=='B'&&board[15][14]=='B'&&board[15][13]=='B'&&board[15][12]=='B'&&board[15][11]=='B')
+       if(board[14][15]=='B'&&board[14][14]=='B'&&board[14][13]=='B'&&board[14][12]=='B'&&board[14][11]=='B')
+          if(board[13][15]=='B'&&board[13][14]=='B'&&board[13][13]=='B'&&board[13][12]=='B')
+             if(board[12][15]=='B'&&board[12][14]=='B'&&board[12][13]=='B')
+                if(board[11][15]=='B'&&board[11][14]=='B')
+                    return evalution(board,player);
+                     
+      char maxboard[][]=new char[16][16];
+      String temp="";
+      String result1=previousmove;
+      int fromx,fromy,tox,toy,comma;
+      ArrayList<String> maxvalid=new ArrayList<String>();
+      double score,finalscore=Double.MIN_VALUE;
+      for(int i=0;i<16;i++)
+      {
+        for(int j=0;j<16;j++)
+        {
+          maxboard[i][j]=board[i][j];
+        }
+      }
+      //temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+      //System.out.println("result1="+result1);
+      comma=result1.indexOf(",");
+      fromx=Integer.parseInt(result1.substring(result1.indexOf(" ")+1,comma));
+      fromy=Integer.parseInt(result1.substring(result1.indexOf(",")+1,result1.indexOf(" ",comma)));
+      tox=Integer.parseInt(result1.substring(result1.lastIndexOf(" ")+1,result1.lastIndexOf(",")));
+      toy=Integer.parseInt(result1.substring(result1.lastIndexOf(",")+1,result1.length()-1));
+      if(player.equals("BLACK"))
+      {  
+       maxboard[tox][toy]='W';
+       maxboard[fromx][fromy]='.';
+       maxvalid=validmovesblack(maxboard);
+       int len=maxvalid.size();
+       //System.out.println("Max valid moves length black"+len);
+         for(int i=0;i<len;i++)
+                {
+                   score=minvalue(maxboard,"WHITE",maxvalid.get(i),depth+1,alpha,beta);
+                   if(finalscore<score)
+                     {
+                       finalscore=score;
+                       //index=i;
+                     }
+                   if(alpha<finalscore)
+                         {
+                          alpha=finalscore;
+                         }
+                   if (alpha >= beta) break;    
+                }
+      }             
+      else
+      {
+        maxboard[tox][toy]='B';
+        maxboard[fromx][fromy]='.';
+        maxvalid=validmoveswhite(maxboard);
+        int len=maxvalid.size();
+        //System.out.println("Max valid moves length white"+len);
+        for(int i=0;i<len;i++)
+                {
+                      /*comma=result1.indexof(",");
+                      fromx=Integer.ParseIntresult1.substring(result1.indexof(" ")+1,comma);
+                      fromy=Integer.ParseIntresult1.substring(result1.indexof(",")+1,result1.indexof(" ",comma));
+                      tox=Integer.ParseInt(result1.substring(result1.lastIndexOf(" ")+1,result1.lastIndexOf(",")));
+                      toy=Integer.ParseInt(result1.substring(result1.lastIndexOf(",")+1,result1.length()));
+                      maxboard[fromx][fromy]='.';
+                      maxboard[tox][toy]='W';
+                      score=evalution(maxboard,"BLACK");
+                      maxboard[fromx][fromy]='W';
+                      maxboard[tox][toy]='.';*/
+                      score=minvalue(maxboard,"BLACK",maxvalid.get(i),depth+1,alpha,beta);
+                      if(finalscore<score)
+                        {
+                         finalscore=score;
+                         //index=i;
+                        }
+                      if(alpha<finalscore)
+                         {
+                          alpha=finalscore;
+                         }
+                      if (alpha >= beta) break;  
+                }
+        }            
+     return finalscore;
+
+   }
+
+   
    
 class minimaxpoint
 {
