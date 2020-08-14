@@ -6846,8 +6846,182 @@ public static allinformation jumpgamewhitecamp(char board[][],int i,int j,int vi
                   }
                 }
               }
-           
-       }
+            outerloop2:
+            for(i=9;i<16&whitefinal==false;i++)
+              {
+                for(int j=9;j<16;j++)
+                {
+                  if(board[i][j]=='W')
+                  {   System.out.println(" Current i and j="+i+" "+j);
+                    if(i-1>=0  && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            {   System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+j+","+(i-1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              System.out.println("temp="+temp);
+                              if(!whitecamp.contains(temp))
+                                  break outerloop2;
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            {
+                              if(board[i-2][j]=='.')
+                              {System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+j+","+(i-2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                  break outerloop2;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {  System.out.println(" Going into . 2");
+                               result="E"+" "+j+","+i+" "+(j+1)+","+(i-1);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               System.out.println("temp="+temp);
+                               if(!whitecamp.contains(temp))
+                                  break outerloop2;
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i-2][j+2]=='.')
+                              {System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i-2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!whitecamp.contains(temp))
+                                   break outerloop2;
+                              }
+                            }
+                           }
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {   System.out.println(" Going into . 3");
+                                result="E"+" "+j+","+i+" "+(j+1)+","+i;
+                                temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                                if(!whitecamp.contains(temp))
+                                   break outerloop2;
+                            }
+                            else if(i>=0 && i<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i][j+2]=='.')
+                              {System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+i;
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!whitecamp.contains(temp))
+                                   break outerloop2;
+                              }
+                            }
+                           }
+                  if(i+1>=0 && i+1 <16 && j+1>=0 && j+1<16)
+                      {
+                            if(board[i+1][j+1]=='.')
+                            {   System.out.println(" Going into . 4");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                 break outerloop2;
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i+2][j+2]=='.')
+                              {System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i+2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!whitecamp.contains(temp))
+                                   break outerloop2;
+                              }
+                            }
+                           }
+                  if(i+1>=0 && i+1 <16 && j>=0 && j<16)
+                      {
+                            if(board[i+1][j]=='.')
+                            {   System.out.println(" Going into . 5");
+                              result="E"+" "+j+","+i+" "+j+","+(i+1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                 break outerloop2;
+                            }
+                            else if(i+2>=0  && i+2<16 && j>=0 && j<16)
+                            {
+                              if(board[i+2][j]=='.')
+                              {System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+j+","+(i+2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!whitecamp.contains(temp))
+                                   break outerloop2;
+                              }
+                            }
+                           }
+                  if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                      {
+                            if(board[i+1][j-1]=='.')
+                            {   System.out.println(" Going into . 6");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                 break outerloop2;
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i+2][j-2]=='.')
+                              {System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i+2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!whitecamp.contains(temp))
+                                  break outerloop2;
+                              }
+                            }
+                           }
+                  if(i>=0 && i <16 && j-1>=0 && j-1<16)
+                      {
+                            if(board[i][j-1]=='.')
+                            {   System.out.println(" Going into . 7");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+i;
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                 break outerloop2;
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i][j-2]=='.')
+                              {System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+i;
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!whitecamp.contains(temp))
+                                  break outerloop2;
+                              }
+                            }
+                           }
+                  if(i-1>= 0 && i-1<16 && j-1>=0 && j-1<16)
+                      {
+                            if(board[i-1][j-1]=='.')
+                            {   System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!whitecamp.contains(temp))
+                                 break outerloop2;
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i-2][j-2]=='.')
+                              { System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i-2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!whitecamp.contains(temp))
+                                   break outerloop2;
+                              }
+                            }
+                      }
+                  }
+                }
+              }
+          }
+        }
+        
      }
 
      else
