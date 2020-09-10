@@ -7021,7 +7021,992 @@ public static allinformation jumpgamewhitecamp(char board[][],int i,int j,int vi
               }
           }
         }
-        
+        else
+        {
+          row=0;
+          for(int column=0;column<=4&&flag==false;column++)
+               {
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    result=jumpBLACK(board,row,column,visited,utilityb);
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(result.equals(""))
+                    {
+                      result=jumpbackBLACK(board,row,column,visited,utilityb);
+                      for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    }
+                    System.out.println("At "+row+" "+column+"  result is "+result);
+                    if(result.equals(""))
+                      { System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1);
+                          }
+                        else if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row);
+                          }
+                        else if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1);
+                          }
+                      }
+                    flag1=false;
+                    flag2=false;
+                    flag3=false;
+                    flag4=false;
+                    flag5=false;
+                    if(result!="")
+                    {  flag1=true;
+                       flag2=true;
+                       flag3=true;
+                       flag4=true;
+                       flag5=true;
+                       resultFinal=result.split("\\.");
+                       result1=resultFinal[resultFinal.length-1];
+                       x=result1.substring(result1.lastIndexOf(" ")+1,result1.lastIndexOf(","));
+                       y=result1.substring(result1.lastIndexOf(",")+1,result1.length());
+                       finalx=Integer.parseInt(x);
+                       finaly=Integer.parseInt(y);
+                       if(finalx==0)
+                         {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                             flag1=false;
+                          }
+                         }   
+                       else if(finalx==1)
+                          {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                              flag2=false;
+                          }
+                         }
+                       else if(finalx==2)
+                           {
+                            if(finaly==0||finaly==1||finaly==2||finaly==3)
+                              {System.out.println("Going into 2nd move");
+                               flag3=false;
+                              }
+                           }
+                       else if(finalx==3)
+                           {if(finaly==0||finaly==1||finaly==2)
+                             {
+                               flag4=false;
+                             }
+                           }
+                       else if(finalx==4)
+                            {if(finaly==0||finaly==1)
+                              {
+                               flag5=false;
+                              }
+                            }
+                      }
+
+                      if(flag1&&flag2&&flag3&&flag4&&flag5)
+                      {
+                        flag=true;
+                      } 
+                }
+              }
+          row=1;
+          for(int column=0;column<5&&flag==false;column++)
+               {
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    result=jumpBLACK(board,row,column,visited,utilityb);
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(result.equals(""))
+                    {
+                      result=jumpbackBLACK(board,row,column,visited,utilityb);
+                      for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    }
+                    System.out.println("At "+row+" "+column+"  result is "+result);
+                    if(result.equals(""))
+                      { System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1);
+                          }
+                        else if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row);
+                          }
+                        else if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1);
+                          }
+                      }
+                    flag1=false;
+                    flag2=false;
+                    flag3=false;
+                    flag4=false;
+                    flag5=false;
+                    if(result!="")
+                    {  flag1=true;
+                       flag2=true;
+                       flag3=true;
+                       flag4=true;
+                       flag5=true;
+                       resultFinal=result.split("\\.");
+                       result1=resultFinal[resultFinal.length-1];
+                       x=result1.substring(result1.lastIndexOf(" ")+1,result1.lastIndexOf(","));
+                       y=result1.substring(result1.lastIndexOf(",")+1,result1.length());
+                       finalx=Integer.parseInt(x);
+                       finaly=Integer.parseInt(y);
+                       if(finalx==0)
+                         {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                             flag1=false;
+                          }
+                         }   
+                       else if(finalx==1)
+                          {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                              flag2=false;
+                          }
+                         }
+                       else if(finalx==2)
+                           {
+                            if(finaly==0||finaly==1||finaly==2||finaly==3)
+                              {System.out.println("Going into 2nd move");
+                               flag3=false;
+                              }
+                           }
+                       else if(finalx==3)
+                           {if(finaly==0||finaly==1||finaly==2)
+                             {
+                               flag4=false;
+                             }
+                           }
+                       else if(finalx==4)
+                            {if(finaly==0||finaly==1)
+                              {
+                               flag5=false;
+                              }
+                            }
+                      }
+
+                      if(flag1&&flag2&&flag3&&flag4&&flag5)
+                      {
+                        flag=true;
+                      }  
+                  }
+               }               
+          row=2;
+          for(int column=0;column<=3&&flag==false;column++)
+               {
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    result=jumpBLACK(board,row,column,visited,utilityb);
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(result.equals(""))
+                    {
+                      result=jumpbackBLACK(board,row,column,visited,utilityb);
+                      for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    }
+                    System.out.println("At "+row+" "+column+"  result is "+result);
+                    if(result.equals(""))
+                      { System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1);
+                          }
+                        else if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row);
+                          }
+                        else if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1);
+                          }
+                      }
+                    flag1=false;
+                    flag2=false;
+                    flag3=false;
+                    flag4=false;
+                    flag5=false;
+                    if(result!="")
+                    {  flag1=true;
+                       flag2=true;
+                       flag3=true;
+                       flag4=true;
+                       flag5=true;
+                       resultFinal=result.split("\\.");
+                       result1=resultFinal[resultFinal.length-1];
+                       x=result1.substring(result1.lastIndexOf(" ")+1,result1.lastIndexOf(","));
+                       y=result1.substring(result1.lastIndexOf(",")+1,result1.length());
+                       finalx=Integer.parseInt(x);
+                       finaly=Integer.parseInt(y);
+                       if(finalx==0)
+                         {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                             flag1=false;
+                          }
+                         }   
+                       else if(finalx==1)
+                          {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                              flag2=false;
+                          }
+                         }
+                       else if(finalx==2)
+                           {
+                            if(finaly==0||finaly==1||finaly==2||finaly==3)
+                              {System.out.println("Going into 2nd move");
+                               flag3=false;
+                              }
+                           }
+                       else if(finalx==3)
+                           {if(finaly==0||finaly==1||finaly==2)
+                             {
+                               flag4=false;
+                             }
+                           }
+                       else if(finalx==4)
+                            {if(finaly==0||finaly==1)
+                              {
+                               flag5=false;
+                              }
+                            }
+                      }
+
+                      if(flag1&&flag2&&flag3&&flag4&&flag5)
+                      {
+                        flag=true;
+                      }    
+                  }
+               }
+          row=3;
+          for(int column=0;column<=2&&flag==false;column++)
+               {
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    result=jumpBLACK(board,row,column,visited,utilityb);
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(result.equals(""))
+                    {
+                      result=jumpbackBLACK(board,row,column,visited,utilityb);
+                      for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    }
+                    System.out.println("At "+row+" "+column+"  result is "+result);
+                    if(result.equals(""))
+                      { System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1);
+                          }
+                        else if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row);
+                          }
+                        else if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1);
+                          }
+                      }
+                    flag1=false;
+                    flag2=false;
+                    flag3=false;
+                    flag4=false;
+                    flag5=false;
+                    if(result!="")
+                    {  flag1=true;
+                       flag2=true;
+                       flag3=true;
+                       flag4=true;
+                       flag5=true;
+                       resultFinal=result.split("\\.");
+                       result1=resultFinal[resultFinal.length-1];
+                       x=result1.substring(result1.lastIndexOf(" ")+1,result1.lastIndexOf(","));
+                       y=result1.substring(result1.lastIndexOf(",")+1,result1.length());
+                       finalx=Integer.parseInt(x);
+                       finaly=Integer.parseInt(y);
+                       if(finalx==0)
+                         {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                             flag1=false;
+                          }
+                         }   
+                       else if(finalx==1)
+                          {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                              flag2=false;
+                          }
+                         }
+                       else if(finalx==2)
+                           {
+                            if(finaly==0||finaly==1||finaly==2||finaly==3)
+                              {System.out.println("Going into 2nd move");
+                               flag3=false;
+                              }
+                           }
+                       else if(finalx==3)
+                           {if(finaly==0||finaly==1||finaly==2)
+                             {
+                               flag4=false;
+                             }
+                           }
+                       else if(finalx==4)
+                            {if(finaly==0||finaly==1)
+                              {
+                               flag5=false;
+                              }
+                            }
+                      }
+
+                      if(flag1&&flag2&&flag3&&flag4&&flag5)
+                      {
+                        flag=true;
+                      }    
+                  }
+               }
+          row=4;
+          for(int column=0;column<=1&&flag==false;column++)
+               {
+                if(board[row][column]=='B')
+                  { visited[row][column]=1;
+                    result=jumpBLACK(board,row,column,visited,utilityb);
+                    for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    if(result.equals(""))
+                    {
+                      result=jumpbackBLACK(board,row,column,visited,utilityb);
+                      for(int pnnr=0;pnnr<16;pnnr++)
+                        {
+                          for(int pnnc=0;pnnc<16;pnnc++)
+                          {
+                            visited[pnnr][pnnc]=visitedinitial[pnnr][pnnc];
+                          }
+                        }
+                    }
+                    System.out.println("At "+row+" "+column+"  result is "+result);
+                    if(result.equals(""))
+                      { System.out.println("in if loop "+row+" "+column);
+                        if(board[row+1][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row+1);
+                          }
+                        else if(board[row][column+1]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column+1)+","+(row);
+                          }
+                        else if(board[row+1][column]=='.')
+                          {
+                             result="E"+" "+column+","+row+" "+(column)+","+(row+1);
+                          }
+                      }
+                    flag1=false;
+                    flag2=false;
+                    flag3=false;
+                    flag4=false;
+                    flag5=false;
+                    if(result!="")
+                    {  flag1=true;
+                       flag2=true;
+                       flag3=true;
+                       flag4=true;
+                       flag5=true;
+                       resultFinal=result.split("\\.");
+                       result1=resultFinal[resultFinal.length-1];
+                       x=result1.substring(result1.lastIndexOf(" ")+1,result1.lastIndexOf(","));
+                       y=result1.substring(result1.lastIndexOf(",")+1,result1.length());
+                       finalx=Integer.parseInt(x);
+                       finaly=Integer.parseInt(y);
+                       if(finalx==0)
+                         {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                             flag1=false;
+                          }
+                         }   
+                       else if(finalx==1)
+                          {if(finaly==0 ||finaly==1||finaly==2||finaly==3||finaly==4){
+                              flag2=false;
+                          }
+                         }
+                       else if(finalx==2)
+                           {
+                            if(finaly==0||finaly==1||finaly==2||finaly==3)
+                              {System.out.println("Going into 2nd move");
+                               flag3=false;
+                              }
+                           }
+                       else if(finalx==3)
+                           {if(finaly==0||finaly==1||finaly==2)
+                             {
+                               flag4=false;
+                             }
+                           }
+                       else if(finalx==4)
+                            {if(finaly==0||finaly==1)
+                              {
+                               flag5=false;
+                              }
+                            }
+                      }
+
+                      if(flag1&&flag2&&flag3&&flag4&&flag5)
+                      {
+                        flag=true;
+                      }  
+                  }
+               }
+          if(result.equals(""))
+          {
+            outerloop3:
+            for(i=7;i<16&&blackfinal==false;i++)
+              {
+                for(int j=0;j<16;j++)
+                {
+                  if(i==11)
+                          { 
+                            if(j==14||j==15){
+                            flagblackreachsingle=false;
+                            }
+                          }  
+                      else if(i==12)
+                          {if(j==13||j==14||j==15){
+                            flagblackreachsingle=false;
+                            }
+                          }
+                      else if(i==13)
+                          {
+                            if(j==12||j==13||j==14||j==15)
+                              {//System.out.println("Going into 2nd move");
+                                flagblackreachsingle=false;
+                              }
+                          }
+                      else if(i==14)
+                           {if(j==11||j==12||j==13||j==14||j==15)
+                              {
+                                flagblackreachsingle=false;
+                              }
+                            }
+                      else if(i==15)
+                           {if(j==11||j==12||j==13||j==14||j==15){
+                                flagblackreachsingle=false;
+                           }
+                          }
+                  if(flagblackreachsingle==true)
+                  {        
+                  if(board[i][j]=='B')
+                  {     System.out.println(" Current i and j="+i+" "+j);
+                        if(i+1>=0  && i+1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i+1][j+1]=='.')
+                            {   System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1);
+                              blackfinal=true;
+                              break outerloop3;
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i+2][j+2]=='.')
+                              {System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i+2);
+                               blackfinal=true;
+                               break outerloop3;
+                              }
+                            }
+                           }
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {   System.out.println(" Going into . 2");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i);
+                              blackfinal=true;
+                              break outerloop3;
+                            }
+                            else if(i>=0  && i<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i][j+2]=='.')
+                              {System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i);
+                               blackfinal=true;
+                               break outerloop3;
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1<16 && j>=0 && j<16)
+                           {
+                            if(board[i+1][j]=='.')
+                            {  System.out.println(" Going into . 3");
+                              result="E"+" "+j+","+i+" "+(j)+","+(i+1);
+                              blackfinal=true;
+                              break outerloop3;
+                            }
+                            else if(i+2>=0 && i+2<16 && j>=0 && j<16)
+                            {
+                              if(board[i+2][j]=='.')
+                              {System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+(j)+","+(i+2);
+                               blackfinal=true;
+                               break outerloop3;
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i+1][j-1]=='.')
+                            {   System.out.println(" Going into . 4");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1);
+                              blackfinal=true;
+                              break outerloop3;
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i+2][j-2]=='.')
+                              {System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i+2);
+                               blackfinal=true;
+                               break outerloop3;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1 <16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {   System.out.println(" Going into . 5");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i-1);
+                              blackfinal=true;
+                              break outerloop3;
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i-2][j+2]=='.')
+                              {System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i-2);
+                               blackfinal=true;
+                               break outerloop3;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i-1][j-1]=='.')
+                            {   System.out.println(" Going into . 6");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1);
+                              blackfinal=true;
+                              break outerloop3;
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i-2][j-2]=='.')
+                              {System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i-2);
+                               blackfinal=true;
+                               break outerloop3;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            {   System.out.println(" Going into . 7");
+                              result="E"+" "+j+","+i+" "+(j)+","+(i-1);
+                              blackfinal=true;
+                              break outerloop3;
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            {
+                              if(board[i-2][j]=='.')
+                              {System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+(j)+","+(i-2);
+                               blackfinal=true;
+                               break outerloop3;
+                              }
+                            }
+                           }
+                        if(i>= 0 && i<16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i][j-1]=='.')
+                            {   System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i);
+                              blackfinal=true;
+                              break outerloop3;
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i][j-2]=='.')
+                              { System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i);
+                               blackfinal=true;
+                               break outerloop3;
+                              }
+                            }
+                           }
+                  }
+                 } 
+                }
+              }
+            outerloop5:
+            for(i=0;i<=6&&blackfinal==false;i++)
+              {
+                for(int j=7;j<16;j++)
+                {
+                  if(board[i][j]=='B')
+                  {     System.out.println(" Current i and j="+i+" "+j);
+                        if(i+1>=0  && i+1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i+1][j+1]=='.')
+                            {   System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1);
+                              blackfinal=true;
+                              break outerloop5;
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i+2][j+2]=='.')
+                              {System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i+2);
+                               blackfinal=true;
+                               break outerloop5;
+                              }
+                            }
+                           }
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {   System.out.println(" Going into . 2");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i);
+                              blackfinal=true;
+                              break outerloop5;
+                            }
+                            else if(i>=0  && i<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i][j+2]=='.')
+                              {System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i);
+                               blackfinal=true;
+                               break outerloop5;
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1<16 && j>=0 && j<16)
+                           {
+                            if(board[i+1][j]=='.')
+                            {  System.out.println(" Going into . 3");
+                              result="E"+" "+j+","+i+" "+(j)+","+(i+1);
+                              blackfinal=true;
+                              break outerloop5;
+                            }
+                            else if(i+2>=0 && i+2<16 && j>=0 && j<16)
+                            {
+                              if(board[i+2][j]=='.')
+                              {System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+(j)+","+(i+2);
+                               blackfinal=true;
+                               break outerloop5;
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i+1][j-1]=='.')
+                            {   System.out.println(" Going into . 4");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1);
+                              blackfinal=true;
+                              break outerloop5;
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i+2][j-2]=='.')
+                              {System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i+2);
+                               blackfinal=true;
+                               break outerloop5;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1 <16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {   System.out.println(" Going into . 5");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i-1);
+                              blackfinal=true;
+                              break outerloop5;
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i-2][j+2]=='.')
+                              {System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i-2);
+                               blackfinal=true;
+                               break outerloop5;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i-1][j-1]=='.')
+                            {   System.out.println(" Going into . 6");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1);
+                              blackfinal=true;
+                              break outerloop5;
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i-2][j-2]=='.')
+                              {System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i-2);
+                               blackfinal=true;
+                               break outerloop5;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            {   System.out.println(" Going into . 7");
+                              result="E"+" "+j+","+i+" "+(j)+","+(i-1);
+                              blackfinal=true;
+                              break outerloop5;
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            {
+                              if(board[i-2][j]=='.')
+                              {System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+(j)+","+(i-2);
+                               blackfinal=true;
+                               break outerloop5;
+                              }
+                            }
+                           }
+                        if(i>= 0 && i<16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i][j-1]=='.')
+                            {   System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i);
+                              blackfinal=true;
+                              break outerloop5;
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i][j-2]=='.')
+                              { System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i);
+                               blackfinal=true;
+                               break outerloop5;
+                              }
+                            }
+                           }
+                  }
+                }
+              }
+            outerloop6:
+            for(i=6;i>=0&blackfinal==false;i--)
+              {
+                for(int j=6;j>=0;j--)
+                {
+                  if(board[i][j]=='B')
+                  {     System.out.println(" Current i and j="+i+" "+j);
+                        if(i+1>=0  && i+1<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i+1][j+1]=='.')
+                            {   System.out.println(" Going into . 1");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i+1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                            }
+                            else if(i+2>=0  && i+2<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i+2][j+2]=='.')
+                              {System.out.println(" Going into Jump 1");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i+2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                              }
+                            }
+                           }
+                        if(i>=0 && i<16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i][j+1]=='.')
+                            {   System.out.println(" Going into . 2");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                            }
+                            else if(i>=0  && i<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i][j+2]=='.')
+                              {System.out.println(" Going into Jump 2");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1<16 && j>=0 && j<16)
+                           {
+                            if(board[i+1][j]=='.')
+                            {  System.out.println(" Going into . 3");
+                              result="E"+" "+j+","+i+" "+(j)+","+(i+1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                            }
+                            else if(i+2>=0 && i+2<16 && j>=0 && j<16)
+                            {
+                              if(board[i+2][j]=='.')
+                              {System.out.println(" Going into Jump 3");
+                               result="J"+" "+j+","+i+" "+(j)+","+(i+2);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                              }
+                            }
+                           }
+                        if(i+1>=0 && i+1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i+1][j-1]=='.')
+                            {   System.out.println(" Going into . 4");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i+1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                            }
+                            else if(i+2>=0  && i+2<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i+2][j-2]=='.')
+                              {System.out.println(" Going into Jump 4");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i+2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1 <16 && j+1>=0 && j+1<16)
+                           {
+                            if(board[i-1][j+1]=='.')
+                            {   System.out.println(" Going into . 5");
+                              result="E"+" "+j+","+i+" "+(j+1)+","+(i-1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                            }
+                            else if(i-2>=0  && i-2<16 && j+2>=0 && j+2<16)
+                            {
+                              if(board[i-2][j+2]=='.')
+                              {System.out.println(" Going into Jump 5");
+                               result="J"+" "+j+","+i+" "+(j+2)+","+(i-2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1 <16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i-1][j-1]=='.')
+                            {   System.out.println(" Going into . 6");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i-1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                            }
+                            else if(i-2>=0  && i-2<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i-2][j-2]=='.')
+                              {System.out.println(" Going into Jump 6");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i-2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                              }
+                            }
+                           }
+                        if(i-1>=0 && i-1<16 && j>=0 && j<16)
+                           {
+                            if(board[i-1][j]=='.')
+                            {   System.out.println(" Going into . 7");
+                              result="E"+" "+j+","+i+" "+(j)+","+(i-1);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                            }
+                            else if(i-2>=0  && i-2<16 && j>=0 && j<16)
+                            {
+                              if(board[i-2][j]=='.')
+                              {System.out.println(" Going into Jump 7");
+                               result="J"+" "+j+","+i+" "+(j)+","+(i-2);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                              }
+                            }
+                           }
+                        if(i>= 0 && i<16 && j-1>=0 && j-1<16)
+                           {
+                            if(board[i][j-1]=='.')
+                            {   System.out.println(" Going into . 8");
+                              result="E"+" "+j+","+i+" "+(j-1)+","+(i);
+                              temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                              if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                            }
+                            else if(i>=0  && i<16 && j-2>=0 && j-2<16)
+                            {
+                              if(board[i][j-2]=='.')
+                              { System.out.println(" Going into Jump 8");
+                               result="J"+" "+j+","+i+" "+(j-2)+","+(i);
+                               temp=result.substring(result.lastIndexOf(" ")+1,result.length());
+                               if(!blackcamp.contains(temp))
+                                  break outerloop6;
+                              }
+                            }
+                           }
+                  }
+                }
+              }
+          }
+       }
      }
 
      else
