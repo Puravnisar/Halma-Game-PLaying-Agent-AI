@@ -15,6 +15,7 @@ import java.text.DecimalFormat;
 //import java.Point;
 
 //check for jumps in left and below direction and a non jump move after taking a jump i
+
 public class fullgamealphabeta
 {  
    public static String jumpWHITE(char board[][],int i,int j,int visited[][],double utility[][])
